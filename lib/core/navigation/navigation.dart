@@ -61,7 +61,7 @@ class _BottomBars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List pageNames = ['Жаңалықтар', 'Мұғалімдер', 'Менторлар', 'Топтар'];
+    List pageNames = ['Басты бет', 'Жаңалықтар', 'Іс шаралар', 'Журнал', 'Чат'];
 
     return BottomNavigationBar(
         onTap: onTap,
