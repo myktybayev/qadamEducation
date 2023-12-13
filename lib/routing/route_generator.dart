@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/core/navigation/navigation.dart';
 import 'package:qadam_education/features/sign_in/sign_in.dart';
 
 import 'app_roures.dart';
@@ -12,7 +13,16 @@ class RouteGenerator {
         // final userCredential = settings.arguments as UserCredential;
         return MaterialPageRoute(
           builder: (context) {
-            return SignIn();
+            return const SignIn();
+            // return MainPage(userCredential: userCredential);
+          },
+        );
+
+      case AppRoutes.home:
+        // final userCredential = settings.arguments as UserCredential;
+        return MaterialPageRoute(
+          builder: (context) {
+            return const NavigationPage();
             // return MainPage(userCredential: userCredential);
           },
         );
