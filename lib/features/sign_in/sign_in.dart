@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qadam_education/constants/app_color.dart';
+import 'package:qadam_education/routing/app_roures.dart';
 
 import 'input_field.dart';
 
@@ -81,7 +82,9 @@ class _SignInState extends State<SignIn> {
 
   Widget _buildLoginButton() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, AppRoutes.home);
+      },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(),
         elevation: 20,
@@ -89,7 +92,7 @@ class _SignInState extends State<SignIn> {
         backgroundColor: AppColor.mainColor,
         minimumSize: const Size.fromHeight(60),
       ),
-      child: Text(
+      child: const Text(
         'Log In',
         style: TextStyle(color: Colors.white),
       ),

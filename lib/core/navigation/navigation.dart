@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/constants/app_color.dart';
+import 'package:qadam_education/features/home/home.dart';
 import 'package:qadam_education/features/news/news_page.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -14,13 +16,9 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   void initState() {
     pages = const [
+      HomePage(),
       NewsPage(),
       NewsPage(),
-      NewsPage(),
-      // BooksPage(),
-      // NamazScreen(),
-      // FAQPage(),
-      // AboutUsPage(),
     ];
     super.initState();
   }
@@ -35,7 +33,7 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: _appBar(context),
+        appBar: _appBar(context),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: IndexedStack(
@@ -47,6 +45,36 @@ class _NavigationPageState extends State<NavigationPage> {
           currentIndex: currentIndex,
         ));
   }
+}
+
+AppBar _appBar(BuildContext context) {
+  return AppBar(
+    toolbarHeight: 70,
+    automaticallyImplyLeading: false,
+    backgroundColor: AppColor.mainColor,
+    leading: IconButton(
+      icon: const Icon(
+        Icons.account_circle_rounded,
+        size: 50,
+        color: Colors.white,
+      ),
+      onPressed: () {},
+    ),
+    title: const Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'User Name',
+          style: TextStyle(color: Colors.white, fontSize: 20.0),
+        ),
+        Text(
+          'email@gmail.com',
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+      ],
+    ),
+  );
 }
 
 class _BottomBars extends StatelessWidget {
@@ -65,12 +93,12 @@ class _BottomBars extends StatelessWidget {
 
     return BottomNavigationBar(
         onTap: onTap,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: AppColor.whiteColor,
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         unselectedFontSize: 0,
-        unselectedItemColor: Colors.white.withOpacity(0.5),
-        selectedItemColor: Colors.white,
+        unselectedItemColor: AppColor.mainColor.withOpacity(0.5),
+        selectedItemColor: AppColor.mainColor,
         showUnselectedLabels: false,
         showSelectedLabels: true,
         selectedFontSize: 14,
@@ -88,61 +116,4 @@ class _BottomBars extends StatelessWidget {
               label: pageNames[3], icon: Icon(Icons.groups)),
         ]);
   }
-}
-
-AppBar _appBar(BuildContext context) {
-  return AppBar(
-    automaticallyImplyLeading: false,
-    backgroundColor: Colors.blue,
-    leading: IconButton(
-      tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      icon: const Icon(Icons.menu),
-      onPressed: () {},
-    ),
-    title: const Text(
-      "title",
-    ),
-    actions: [
-      IconButton(
-        tooltip: "t",
-        icon: const Icon(
-          Icons.favorite,
-        ),
-        onPressed: () {},
-      ),
-      IconButton(
-        tooltip: 'i',
-        icon: const Icon(
-          Icons.search,
-        ),
-        onPressed: () {},
-      ),
-      Row(
-        children: [
-          Text('hello'),
-        ],
-      ),
-      PopupMenuButton<Text>(
-        itemBuilder: (context) {
-          return [
-            const PopupMenuItem(
-              child: Text(
-                "first",
-              ),
-            ),
-            const PopupMenuItem(
-              child: Text(
-                "first",
-              ),
-            ),
-            const PopupMenuItem(
-              child: Text(
-                "first",
-              ),
-            ),
-          ];
-        },
-      )
-    ],
-  );
 }
