@@ -13,8 +13,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.signIn,
       onGenerateRoute: RouteGenerator.generateRoute,
+      initialRoute: AppRoutes.home,
       title: 'Qadam Education',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
