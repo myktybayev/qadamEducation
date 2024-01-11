@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qadam_education/core/navigation/navigation.dart';
-import 'package:qadam_education/features/sign_in/sign_in.dart';
-
-import 'app_roures.dart';
+import 'package:qadam_education/features/home/repository/database_repository.dart';
+import 'package:qadam_education/features/home/ui/cubit/home_cubit.dart';
+import 'package:qadam_education/features/sign_in/sign_in_page.dart';
+import 'package:qadam_education/routing/app_roures.dart';
 
 class RouteGenerator {
   static Route<Object?>? generateRoute(RouteSettings settings) {
@@ -10,21 +12,24 @@ class RouteGenerator {
 
     switch (routeName) {
       case AppRoutes.signIn:
-        // final userCredential = settings.arguments as UserCredential;
         return MaterialPageRoute(
           builder: (context) {
-            return const SignIn();
+            return const SignInPage();
             // return MainPage(userCredential: userCredential);
           },
         );
-
       case AppRoutes.home:
-        // final userCredential = settings.arguments as UserCredential;
         return MaterialPageRoute(
-          builder: (context) {
-            return const NavigationPage();
-            // return MainPage(userCredential: userCredential);
-          },
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider<HomeCubit>(
+                create: (context) => HomeCubit(
+                  DatabaseRepository(),
+                ),
+              ),
+            ],
+            child: const NavigationPage(),
+          ),
         );
 
       default:
@@ -59,7 +64,6 @@ class RouteGenerator {
                 SizedBox(
                   height: 450.0,
                   width: 450.0,
-                  // child: Lottie.asset('assets/lottie/error.json'),
                 ),
                 Text(
                   'Seems the route you\'ve navigated to doesn\'t exist!!',

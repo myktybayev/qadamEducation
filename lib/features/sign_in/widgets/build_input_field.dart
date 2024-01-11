@@ -4,7 +4,11 @@ class BuildInputField extends StatefulWidget {
   final TextEditingController controller;
   final bool isPassword;
 
-  BuildInputField({required this.controller, this.isPassword = false});
+  const BuildInputField({
+    super.key,
+    required this.controller,
+    this.isPassword = false,
+  });
 
   @override
   _BuildInputFieldState createState() => _BuildInputFieldState();
