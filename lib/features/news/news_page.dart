@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/features/news/widgets/news_item.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -15,7 +16,7 @@ class _NewsPageState extends State<NewsPage> {
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return newsItem(title: 'Title');
+            return const NewsItem(photo: 'photo', title: 'Title', date: 'now');
           },
         ),
       ),
@@ -23,16 +24,7 @@ class _NewsPageState extends State<NewsPage> {
         onPressed: () {},
         tooltip: 'Жаңалық енгізу',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
-
-  Widget newsItem({photo, title, date}) {
-    return Text('$title $date');
-  }
-
-  // Var II
-  // Widget newsItem({String photo, String title, String date}) {
-  //   return Text('$title $date');
-  // }
 }
