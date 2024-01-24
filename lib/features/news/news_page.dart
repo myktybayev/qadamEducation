@@ -23,16 +23,14 @@ class _NewsPageState extends State<NewsPage> {
         onPressed: () {},
         tooltip: 'Жаңалық енгізу',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
   Widget newsItem({photo, title, date}) {
-    return Text('$title $date');
+    return ListTile(
+      title: const Text('Titlte'),
+      subtitle: Text('Subtitle $date'),
+    );
   }
-
-  // Var II
-  // Widget newsItem({String photo, String title, String date}) {
-  //   return Text('$title $date');
-  // }
 }
