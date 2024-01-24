@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/features/news/widgets/news_item.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -15,7 +16,7 @@ class _NewsPageState extends State<NewsPage> {
         child: ListView.builder(
           itemCount: 5,
           itemBuilder: (context, index) {
-            return newsItem(title: 'Title');
+            return const NewsItem(photo: 'photo', title: 'Title', date: 'now');
           },
         ),
       ),
@@ -24,13 +25,6 @@ class _NewsPageState extends State<NewsPage> {
         tooltip: 'Жаңалық енгізу',
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  Widget newsItem({photo, title, date}) {
-    return ListTile(
-      title: const Text('Titlte'),
-      subtitle: Text('Subtitle $date'),
     );
   }
 }
