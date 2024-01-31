@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/features/chat/chat_list.dart';
 import 'package:qadam_education/routing/app_roures.dart';
 import 'package:qadam_education/routing/route_generator.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MaterialApp(
+    home: ChatList(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
