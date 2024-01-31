@@ -1,42 +1,109 @@
 import 'package:flutter/material.dart';
 import 'package:qadam_education/features/chat/messages.dart';
 
+void main() {
+  runApp(const ChatList());
+}
+
 class ChatList extends StatelessWidget {
   const ChatList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: messagesList.length,
-      itemBuilder: (context, index) {
-        return MyItem(messagesList[index]);
-      },
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 2, // Number of tabs
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Chat List'),
+            bottom: const TabBar(
+              tabs: [
+                Tab(text: 'Mentorlar'),
+                Tab(text: 'Mugalimder'),
+              ],
+            ),
+          ),
+          body: const TabBarView(
+            children: [
+              Chattar(tabTitle: 'Mentorlar'),
+              Chattar(tabTitle: 'Mugalimder'),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
-List<Messages> messagesList = [
-  Messages(
-    photo: "assets/images/profile_photo.png",
-    name: "Nazerke Utetileu",
-    email: "nazerke.utetileu@jihc.kz",
-  ),
-  Messages(
-    photo: "assets/images/profile_photo.png",
-    name: "Nazerke Utetileu",
-    email: "nazerke.utetileu@jihc.kz",
-  ),
-  Messages(
-    photo: "assets/images/profile_photo.png",
-    name: "Nazerke Utetileu",
-    email: "nazerke.utetileu@jihc.kz",
-  ),
-  Messages(
-    photo: "assets/images/profile_photo.png",
-    name: "Nazerke Utetileu",
-    email: "nazerke.utetileu@jihc.kz",
-  ),
-];
+class Chattar extends StatelessWidget {
+  final String tabTitle;
+  const Chattar({super.key, required this.tabTitle});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Messages> messagesListForTab = getMessagesListForTab();
+    return ListView.builder(
+      itemCount: messagesListForTab.length,
+      itemBuilder: (context, index) {
+        return MyItem(messagesListForTab[index]);
+      },
+    );
+  }
+
+  List<Messages> getMessagesListForTab() {
+    if (tabTitle == 'Mentorlar') {
+      return [
+        Messages(
+          photo: "assets/images/profile_photo.png",
+          name: "Nazerke Utetileu",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo.png",
+          name: "Nazerke Utetileu",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo.png",
+          name: "Nazerke Utetileu",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo.png",
+          name: "Nazerke Utetileu",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+
+// List of mentor messages
+      ];
+    } else if (tabTitle == 'Mugalimder') {
+      return [
+        Messages(
+          photo: "assets/images/profile_photo2.png",
+          name: "Nursaya Sharipbay",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo2.png",
+          name: "Nursaya Sharipbay",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo2.png",
+          name: "Nursaya Sharipbay",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+        Messages(
+          photo: "assets/images/profile_photo2.png",
+          name: "Nursaya Sharipbay",
+          email: "nazerke.utetileu@jihc.kz",
+        ),
+      ];
+    } else {
+      return [];
+    }
+  }
+}
 
 class MyItem extends StatelessWidget {
   final Messages messages;
@@ -49,7 +116,7 @@ class MyItem extends StatelessWidget {
       decoration: const BoxDecoration(
           border: Border(
               bottom: BorderSide(
-        color: Colors.black,
+        color: Colors.grey,
         width: 1.0,
       ))),
       padding: const EdgeInsets.only(bottom: 20),
