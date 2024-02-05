@@ -15,7 +15,7 @@ class NewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('Titlte $photo'),
+      title: Text('Title $photo'),
       subtitle: Text('Subtitle $date'),
     );
   }
