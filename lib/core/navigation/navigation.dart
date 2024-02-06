@@ -3,6 +3,7 @@ import 'package:qadam_education/core/navigation/app_bar.dart';
 import 'package:qadam_education/core/navigation/bottom_navigation_bar.dart';
 import 'package:qadam_education/features/home/home_page.dart';
 import 'package:qadam_education/features/news/news_page.dart';
+import 'package:qadam_education/features/zhurnal/zhurnal_page.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -20,6 +21,7 @@ class _NavigationPageState extends State<NavigationPage> {
       HomePage(),
       NewsPage(),
       NewsPage(),
+      ZhurnalPage(),
     ];
     super.initState();
   }
