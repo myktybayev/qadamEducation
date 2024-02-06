@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qadam_education/features/zhurnal/widgets/list_builder_profile.dart';
 
 class SabakkaKatysu extends StatefulWidget {
   const SabakkaKatysu({Key? key}) : super(key: key);
@@ -8,115 +9,10 @@ class SabakkaKatysu extends StatefulWidget {
 }
 
 class _SabakPageState extends State<SabakkaKatysu> {
-  final List<Map<String, dynamic>> allUsers = [
-    {
-      "date": "11.12",
-      "name": "Математика",
-      "profile": "сабақта жоқ",
-    },
-    {
-      "date": "15.12",
-      "name": "Физика",
-      "profile": "сабақта жоқ",
-    },
-    {
-      "date": "13.12",
-      "name": "Химия",
-      "profile": "сабақта жоқ",
-    },
-    {
-      "date": "18.12",
-      "name": "Математика",
-      "profile": "сабақта жоқ",
-    },
-  ];
-
-  List<Map<String, dynamic>> _foundUsers = [];
-  @override
-  initState() {
-    _foundUsers = allUsers;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: _foundUsers.length,
-                itemBuilder: (context, index) => Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        elevation: 2,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(10),
-                            topRight: Radius.circular(10),
-                          ),
-                          side: BorderSide(width: 1, color: Colors.deepPurple),
-                        ),
-                        child: ListTile(
-                          title: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                _foundUsers[index]['date'].toString(),
-                                style: const TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    fontSize: 14,
-                                    color: Colors.deepPurple,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              _textBuildCustom(index),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _textBuildCustom(index) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              _foundUsers[index]['name'].toString(),
-              maxLines: 1,
-              style: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 18,
-                  color: Colors.deepPurple,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text(
-              _foundUsers[index]['profile'].toString(),
-              maxLines: 1,
-              style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.deepPurple,
-                  fontWeight: FontWeight.normal),
-            ),
-          ],
-        ),
-      ),
+      body: ListBuilderProfile(),
     );
   }
 }
