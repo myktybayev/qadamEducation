@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:qadam_education/constants/app_color.dart';
 import 'package:qadam_education/routing/app_roures.dart';
 
-import 'input_field.dart';
+import 'widgets/build_input_field.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignInState extends State<SignIn> {
-  late Size mediaSize;
+class _SignInPageState extends State<SignInPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    mediaSize = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
@@ -30,6 +28,8 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget _buildTop() {
+    final mediaSize = MediaQuery.sizeOf(context);
+
     return SizedBox(
       width: mediaSize.width,
       child: const Center(
@@ -46,6 +46,8 @@ class _SignInState extends State<SignIn> {
   }
 
   Widget _buildBottom() {
+    final mediaSize = MediaQuery.sizeOf(context);
+
     return SizedBox(
       width: mediaSize.width,
       child: Padding(
